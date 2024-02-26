@@ -20,7 +20,7 @@ import {
 	CreatorInterstitial,
 	ExtrasInterstitial,
 	FirewallInterstitial,
-	JetpackAIInterstitial,
+	JetpackAiInterstitial,
 	ProtectInterstitial,
 	ScanInterstitial,
 	SocialInterstitial,
@@ -69,7 +69,7 @@ const MyJetpack = () => {
 							<Route path="/add-jetpack-ai" element={ <JetpackAiInterstitial /> } />
 							<Route path="/add-extras" element={ <ExtrasInterstitial /> } />
 							<Route path="/add-protect" element={ <ProtectInterstitial /> } />
-              <Route path="/add-firewall" element={ <FirewallInterstitial /> } />
+							<Route path="/add-firewall" element={ <FirewallInterstitial /> } />
 							<Route path="/add-scan" element={ <ScanInterstitial /> } />
 							<Route path="/add-social" element={ <SocialInterstitial /> } />
 							<Route path="/add-search" element={ <SearchInterstitial /> } />
