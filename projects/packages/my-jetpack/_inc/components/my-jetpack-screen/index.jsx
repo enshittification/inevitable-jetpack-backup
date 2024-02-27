@@ -21,12 +21,12 @@ import { useContext, useEffect, useState } from 'react';
  * Internal dependencies
  */
 import { NoticeContext } from '../../context/notices/noticeContext';
+import useProduct from '../../data/products/use-product';
 import useAnalytics from '../../hooks/use-analytics';
 import useChatAuthentication from '../../hooks/use-chat-authentication';
 import useChatAvailability from '../../hooks/use-chat-availability';
 import useConnectionWatcher from '../../hooks/use-connection-watcher';
 import useGlobalNotice from '../../hooks/use-notice';
-import { useProduct } from '../../hooks/use-product';
 import ConnectionsSection from '../connections-section';
 import IDCModal from '../idc-modal';
 import JetpackManageBanner from '../jetpack-manage-banner';
