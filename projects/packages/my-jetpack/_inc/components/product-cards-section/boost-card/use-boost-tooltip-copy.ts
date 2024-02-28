@@ -1,9 +1,10 @@
 import { __ } from '@wordpress/i18n';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { REST_API_SITE_PURCHASES_ENDPOINT } from '../../../data/constants';
+import useProduct from '../../../data/products/use-product';
 import { Purchase } from '../../../data/types';
 import useSimpleQuery from '../../../data/use-simple-query';
-import { useProduct } from '../../../hooks/use-product';
+import type { UseQueryResult } from '@tanstack/react-query';
 
 const JETPACK_BOOST_PRODUCTS = [
 	'jetpack_boost_bi_yearly',
@@ -11,18 +12,11 @@ const JETPACK_BOOST_PRODUCTS = [
 	'jetpack_boost_monthly',
 ];
 
-/**
- * Gets the tooltip copy based on the Boost letter grade and other factors.
- *
- * @param {string} speedLetterGrade - The Boost speed letter grade.
- * @returns {React.ReactElement | string} A translated JSX Element or string.
- */
-export function useBoostTooltipCopy( { speedLetterGrade } ) {
+export const useBoostTooltipCopy = ( { speedLetterGrade } ) => {
 	const slug = 'boost';
-	const { data: purchases, isLoading }: { data: Array< Purchase >; isLoading: boolean } =
-		useSimpleQuery( 'purchases', {
-			path: REST_API_SITE_PURCHASES_ENDPOINT,
-		} );
+	const { data: purchases, isLoading } = useSimpleQuery( 'purchases', {
+		path: REST_API_SITE_PURCHASES_ENDPOINT,
+	} ) as UseQueryResult< Purchase[] >;
 	const hasBoostPaidPlan = useMemo( () => {
 		if ( isLoading ) {
 			return false;
@@ -104,4 +98,4 @@ export function useBoostTooltipCopy( { speedLetterGrade } ) {
 				'jetpack-my-jetpack'
 			);
 	}
-}
+};
