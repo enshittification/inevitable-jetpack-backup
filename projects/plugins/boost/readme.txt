@@ -183,7 +183,7 @@ If you run into compatibility issues, please do let us know. You can drop us a l
 2. Jetpack Boost Speed Improvement
 
 == Changelog ==
-### 3.1.1-beta - 2024-03-01
+### 3.1.1-beta-2 - 2024-03-01
 #### Added
 - Cache: Added a Page Cache module.
 - Defer JS: Automatically exclude JSON-LD schemas.
