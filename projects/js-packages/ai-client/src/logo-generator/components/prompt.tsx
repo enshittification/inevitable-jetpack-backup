@@ -21,7 +21,6 @@ import { useCheckout } from '../hooks/use-checkout.js';
 import useLogoGenerator from '../hooks/use-logo-generator.js';
 import useRequestErrors from '../hooks/use-request-errors.js';
 import { FairUsageNotice } from './fair-usage-notice.js';
-import { UpgradeNudge } from './upgrade-nudge.js';
 import './prompt.scss';
 
 const debug = debugFactory( 'jetpack-ai-calypso:prompt-box' );
@@ -45,7 +44,6 @@ export const Prompt: React.FC< { initialPrompt?: string } > = ( { initialPrompt 
 		getAiAssistantFeature,
 		requireUpgrade,
 		context,
-		tierPlansEnabled,
 	} = useLogoGenerator();
 
 	const enhancingLabel = __( 'Enhancing…', 'jetpack-ai-client' );
@@ -197,8 +195,7 @@ export const Prompt: React.FC< { initialPrompt?: string } > = ( { initialPrompt 
 						</Tooltip>
 					</div>
 				) }
-				{ requireUpgrade && tierPlansEnabled && <UpgradeNudge /> }
-				{ requireUpgrade && ! tierPlansEnabled && <FairUsageNotice /> }
+				{ requireUpgrade && <FairUsageNotice /> }
 				{ enhancePromptFetchError && (
 					<div className="jetpack-ai-logo-generator__prompt-error">
 						{ __( 'Error enhancing prompt. Please try again.', 'jetpack-ai-client' ) }
