@@ -155,6 +155,13 @@ export const Prompt = ( { initialPrompt = '', showStyleSelector = false }: Promp
 		( styleKey: ImageStyle ) => styleKey !== IMAGE_STYLE_MONTY_PYTHON
 	);
 
+	const onKeyDown = ( event: React.KeyboardEvent ) => {
+		if ( event.key === 'Enter' ) {
+			event.preventDefault();
+			onGenerate();
+		}
+	};
+
 	return (
 		<div className="jetpack-ai-logo-generator__prompt">
 			<div className="jetpack-ai-logo-generator__prompt-header">
@@ -186,6 +193,8 @@ export const Prompt = ( { initialPrompt = '', showStyleSelector = false }: Promp
 			</div>
 			<div className="jetpack-ai-logo-generator__prompt-query">
 				<div
+					role="textbox"
+					tabIndex={ 0 }
 					ref={ inputRef }
 					contentEditable={ ! isBusy && ! requireUpgrade }
 					// The content editable div is expected to be updated by the enhance prompt, so warnings are suppressed
@@ -193,6 +202,7 @@ export const Prompt = ( { initialPrompt = '', showStyleSelector = false }: Promp
 					className="prompt-query__input"
 					onInput={ onPromptInput }
 					onPaste={ onPromptPaste }
+					onKeyDown={ onKeyDown }
 					data-placeholder={ __(
 						'Describe your site or simply ask for a logo specifying some details about it',
 						'jetpack-ai-client'
